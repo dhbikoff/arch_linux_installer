@@ -31,11 +31,14 @@ arch-chroot /mnt << EOF
   echo LANG=en_US.UTF-8 > /etc/locale.conf
   echo arch > /etc/hostname
   mkinitcpio -p linux
-  echo -e "arch\narch" | passwd
   bootctl --path=/boot install
   echo -e "default arch\ntimeout 4\n" > /boot/loader/loader.conf
   echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=/dev/sda3 rw" > /boot/loader/entries/arch.conf
   systemctl enable dhcpcd@enp0s3.service
+  pacman -S --noconfirm git tree xsel vim sudo bash-completion dkms xorg-server xorg-xinit
+  useradd -m -G wheel arch
+  echo -e "arch\narch" | passwd arch
+  echo -e "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 EOF
 
 umount -R /mnt
