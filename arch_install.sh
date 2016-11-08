@@ -39,6 +39,7 @@ arch-chroot /mnt << EOF
   useradd -m -G wheel arch
   echo -e "arch\narch" | passwd arch
   echo -e "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+  passwd -l root
 EOF
 
 umount -R /mnt
