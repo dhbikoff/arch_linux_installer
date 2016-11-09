@@ -27,6 +27,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt << EOF
   ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
   hwclock --systohc --utc
+  echo -e "en_US.UTF-8 UTF-8" >> /etc/locale.gen
   locale-gen
   echo LANG=en_US.UTF-8 > /etc/locale.conf
   echo arch > /etc/hostname
