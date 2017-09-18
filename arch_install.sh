@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 timedatectl set-ntp true
 
@@ -44,4 +45,3 @@ arch-chroot /mnt << EOF
 EOF
 
 umount -R /mnt
-reboot
