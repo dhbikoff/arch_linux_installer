@@ -37,7 +37,7 @@ arch-chroot /mnt << EOF
   echo -e "default arch\ntimeout 4\n" > /boot/loader/loader.conf
   echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=/dev/sda3 rw" > /boot/loader/entries/arch.conf
   systemctl enable dhcpcd@enp0s3.service
-  pacman -S --noconfirm git tree xsel vim sudo bash-completion dkms xorg-server xorg-xinit linux-headers base-devel
+  pacman -S --noconfirm dialog wpa_supplicant git tree xsel vim sudo bash-completion dkms xorg-server xorg-xinit linux-headers base-devel
   useradd -m -G wheel arch
   echo -e "arch\narch" | passwd arch
   echo -e "%wheel ALL=(ALL) ALL" >> /etc/sudoers
